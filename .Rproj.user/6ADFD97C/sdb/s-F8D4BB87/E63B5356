@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list=ls())\nIBM <-read.csv(\"IBMStock.csv\", header = T)\nGE <-read.csv(\"GEStock.csv\", header = T)\nBoeing <-read.csv(\"BoeingStock.csv\", header = T)\nCocaCola <-read.csv(\"CocaColaStock.csv\", header = T)\nProcterGamble <-read.csv(\"ProcterGambleStock.csv\", header = T)\nstr(GE)\nIBM$Date = as.Date(IBM$Date, \"%m/%d/%y\")\nGE$Date = as.Date(GE$Date, \"%m/%d/%y\")\nCocaCola$Date = as.Date(CocaCola$Date, \"%m/%d/%y\")\nProcterGamble$Date = as.Date(ProcterGamble$Date, \"%m/%d/%y\")\nBoeing$Date = as.Date(Boeing$Date, \"%m/%d/%y\")\nplot(GE, type = \"l\", main = \"GE\")\nplot(IBM, type = \"l\", main = \"IBM\")\nplot(Boeing, type = \"l\", main = \"Boeing\")\nplot(CocaCola, type = \"l\", main = \"CocaCola\")\nplot(ProcterGamble, type = \"l\", main = \"Procter & Gamble\")\nGE\nsummary(IBM$StockPrice)\nsummary(GE$StockPrice)\nsummary(CocaCola$StockPrice)\nsummary(Boeing$StockPrice)\nsd(ProcterGamble$StockPrice)\nsd(IBM$StockPrice)\nsd(GE$StockPrice)\nsd(CocaCola$StockPrice)\nsd(Boeing$StockPrice)\nplot(CocaCola, type = \"l\", main = \"CocaCola\")\nwhich.max(CocaCola$StockPrice)\nCocaCola[37,]\nlines(ProcterGamble$Date, ProcterGamble$StockPrice, col = \"Red\")\nabline(v=as.Date(c(\"2000-03-01\")), lwd=2)\nplot(CocaCola, type = \"l\", main = \"CocaCola\")\nlines(ProcterGamble$Date, ProcterGamble$StockPrice, col = \"Red\")\nabline(v=as.Date(c(\"1983-03-01\")), lwd=2)\nsummary(ProcterGamble$StockPrice)\nplot(CocaCola$Date[301:432], CocaCola$StockPrice[301:432], type=\"l\", col=\"red\", ylim=c(0,210))\nlines(ProcterGamble$Date[301:432], ProcterGamble$StockPrice[301:432], col=\"blue\")\nlines(IBM$Date[301:432], IBM$StockPrice[301:432], col=\"green\")\nlines(GE$Date[301:432], GE$StockPrice[301:432], col=\"purple\")\nlines(Boeing$Date[301:432], Boeing$StockPrice[301:432], col=\"black\")\nabline(v=as.Date(c(\"2000-03-01\")), lwd=1)\n\nplot(CocaCola$Date[301:432], CocaCola$StockPrice[301:432], type=\"l\", col=\"red\", ylim=c(0,210))\nlines(ProcterGamble$Date[301:432], ProcterGamble$StockPrice[301:432], col=\"blue\")\nlines(IBM$Date[301:432], IBM$StockPrice[301:432], col=\"green\")\nlines(GE$Date[301:432], GE$StockPrice[301:432], col=\"purple\")\nlines(Boeing$Date[301:432], Boeing$StockPrice[301:432], col=\"black\")\nabline(v=as.Date(c(\"1997-09-01\")), lwd=1)\nabline(v=as.Date(c(\"1997-11-01\")), lwd=1)\n\nplot(CocaCola$Date[301:432], CocaCola$StockPrice[301:432], type=\"l\", col=\"red\", ylim=c(0,210))\nlines(ProcterGamble$Date[301:432], ProcterGamble$StockPrice[301:432], col=\"blue\")\nlines(IBM$Date[301:432], IBM$StockPrice[301:432], col=\"green\")\nlines(GE$Date[301:432], GE$StockPrice[301:432], col=\"purple\")\nlines(Boeing$Date[301:432], Boeing$StockPrice[301:432], col=\"black\")\nabline(v=as.Date(c(\"2004-01-01\")), lwd=1)\nabline(v=as.Date(c(\"2005-01-01\")), lwd=1)\ntapply(IBM$StockPrice, months(IBM$Date), mean)\nsummary(tapply(IBM$StockPrice, months(IBM$Date), mean))\nsort(tapply(IBM$StockPrice, months(IBM$Date), mean))\nsummary(IBM$StockPrice)\nsort(tapply(GE$StockPrice, months(GE$Date), mean))\nsort(tapply(CocaCola$StockPrice, months(CocaCola$Date), mean))\n",
+    "created" : 1433591114897.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3283949008",
+    "id" : "E63B5356",
+    "lastKnownWriteTime" : 1433599306,
+    "path" : "~/Documents/R/AnalyticsEdge/Assignment2.R",
+    "project_path" : "Assignment2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

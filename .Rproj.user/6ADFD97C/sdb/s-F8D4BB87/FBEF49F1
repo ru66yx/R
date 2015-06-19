@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list=ls())\ncps <-read.csv(\"CPSData.csv\", header = T)\nstr(cps)\nsummary(cps)\nsort(table(cps$State))\n(116639 +7073) / (116639 +7073 + 7590)\nsort(table(cps$Race[cps$Hispanic == 1]))\n# sum(is.na(cps$Age)) # 0\n# table(is.na(cps))\ntable(is.na(cps[,4]))\ntable(is.na(cps[,6]))\ntable(is.na(cps[,8]))\ntable(is.na(cps[,13]))\ntable(is.na(cps[,14]))\ntable(cps$Region, is.na(cps$Married))\ntable(cps$Sex, is.na(cps$Married))\ntable(cps$Age, is.na(cps$Married))\ntable(cps$Citizenship, is.na(cps$Married))\ntable(cps$State, is.na(cps$MetroAreaCode))\ntable(cps$Region, is.na(cps$MetroAreaCode))\ntable(cps$State, is.na(cps$MetroAreaCode))\ntapply(is.na(cps$MetroAreaCode),cps$State, mean)\nsort(tapply(is.na(cps$MetroAreaCode),cps$State, mean))\nMetroAreaMap  <-read.csv(\"MetroAreaCodes.csv\", header = T)\nCountryMap <- read.csv(\"CountryCodes.csv\", header = T)\ncps = merge(cps, MetroAreaMap, by.x=\"MetroAreaCode\", by.y=\"Code\", all.x=TRUE)\nsum(is.na(cps$MetroAreaCode))\nsort(table(cps$MetroArea))\nsort(tapply(cps$Hispanic,cps$MetroArea,mean))\n# sort(table(cps$MetroArea[cps$Race == \"Asian\"]))\n# mean(table(cps$MetroArea[cps$Race == \"Asian\"]))\nsort(tapply(cps$Race==\"Asian\", cps$MetroArea, mean))\nsort(tapply(cps$Education == \"No high school diploma\", cps$MetroArea, mean, na.rm = TRUE))\ncps = merge(cps, CountryMap, by.x=\"CountryOfBirthCode\", by.y =\"Code\", all.x=TRUE)\nsum(is.na(cps$Country))\ntable(cps$Country)\nsort(table(cps$Country))\ntapply(cps$Country !=\"United States\", cps$MetroArea ==\"New York-Northern New Jersey-Long Island, NY-NJ-PA\",mean, na.rm=TRUE )\ntapply(cps$Country !=\"United States\", cps$MetroArea ==\"New York-Northern New Jersey-Long Island, NY-NJ-PA\",mean, na.rm=TRUE )\nsort(tapply(cps$Country ==\"India\", cps$MetroArea ,max, na.rm=TRUE ))\ntapply(cps$MetroArea ,cps$Country ==\"India\", sum, na.rm=TRUE )\nsort(tapply(cps$Country ==\"India\", cps$MetroArea, sum, na.rm = T))\nsort(tapply(cps$Country ==\"Brazil\", cps$MetroArea, sum, na.rm = T))\nsort(tapply(cps$Country ==\"Somalia\", cps$MetroArea, sum, na.rm = T))\nsort(tapply(cps$Country ==\"Nigeria\", cps$MetroArea, sum, na.rm = T))\nsort(tapply(cps$Country ==\"Jamaica\", cps$MetroArea, sum, na.rm = T))\n\n",
+    "created" : 1433599320978.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1547076234",
+    "id" : "FBEF49F1",
+    "lastKnownWriteTime" : 1434192645,
+    "path" : "~/Documents/R/AnalyticsEdge/Assignment3.R",
+    "project_path" : "Assignment3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,18 @@
+{
+    "contents" : "ls()\nwho <- read.csv(\"WHO.csv\", header = T)\nstr(who)\nsummary(who$Over60)\nwhich.min(who$Over60)\nwho$Over60[183]\nwho[183,]\nwhich.max(who$LiteracyRate)\nwho[44,]\ntapply(who$ChildMortality, who$Region,mean)\n\n",
+    "created" : 1433505194631.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "592675991",
+    "id" : "C6D52258",
+    "lastKnownWriteTime" : 1433591095,
+    "path" : "~/Documents/R/AnalyticsEdge/ex1.R",
+    "project_path" : "ex1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

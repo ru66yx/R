@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list=ls())\nmvt <-read.csv(\"mvtWeek1.csv\", header = T)\nstr(mvt)\nmax(mvt$ID)\nmin(mvt$Beat)\nsum(mvt$Arrest == T)\nsum(mvt$LocationDescription == \"ALLEY\")\nhead(mvt$Date)\ntail(mvt$Date)\nDateConvert = as.Date(strptime(mvt$Date, \"%m/%d/%y %H:%M\"))\nhead(DateConvert)\ntail(DateConvert)\nsummary(DateConvert)\nmvt$Month = months(DateConvert)\nmvt$Weekday = weekdays(DateConvert)\ntable(mvt$Month)\ntable(mvt$Weekday)\ntable(mvt$Month[mvt$Arrest==T])\nmvt$Date = DateConvert\nhist(mvt$Date, breaks=100)\nsummary(mvt$Date)\nboxplot(mvt$Date[mvt$Arrest==T])\nboxplot(mvt$Date[mvt$Arrest==F])\nboxplot(mvt$Date~mvt$Arrest)\nmyr1 <- subset(mvt,mvt$Date >= \"2001-1-01\" & mvt$Date <= \"2001-12-31\")\ntable(mvt$Arrest, mvt$Year)\nmyr <-subset(mvt,mvt$Date >=\"2007-01-01\" & mvt$Date <=\"2007-12-31\")\ntable(mvt$Month,mvt$Arrest==T)\ntable(myr$Month,myr$Arrest==T)\nmean(myr$Arrest==T)\nmean(myr1$Arrest==T)\nsort(table(mvt$LocationDescription))\ntop5 <- subset(mvt, mvt$LocationDescription ==\"STREET\" | mvt$LocationDescription == \"PARKING LOT/GARAGE(NON.RESID.)\" | mvt$LocationDescription ==\"ALLEY\"\n               | mvt$LocationDescription == \"GAS STATION\" | mvt$LocationDescription ==\"DRIVEWAY - RESIDENTIAL\")\ntop5$LocationDescription = factor(top5$LocationDescription)\ntable(top5$LocationDescription,top5$Arrest==T)\na = 249/(249+2059)\nd = 132/(132+1543)\ng = 439 / (439 +1672)\np = 1603 /(1603 + 13249)\ns = 11595/ (144969 + 11595)\nstr(mvt)\ntable(mvt$Weekday[mvt$LocationDescription == \"GAS STATION\"])\nsort(table(mvt$Weekday[mvt$LocationDescription == \"GAS STATION\"]))\nsort(table(mvt$Weekday[mvt$LocationDescription == \"DRIVEWAY - RESIDENTIAL\"]))\n",
+    "created" : 1433507276294.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3392452844",
+    "id" : "9C73DF17",
+    "lastKnownWriteTime" : 1433599312,
+    "path" : "~/Documents/R/AnalyticsEdge/Assignment1.R",
+    "project_path" : "Assignment1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

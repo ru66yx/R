@@ -1,0 +1,18 @@
+{
+    "contents" : "quality <- read.csv(\"quality.csv\", header = TRUE)\nhead(quality)\nsummary(quality)\nstr(quality)\ntable (quality$PoorCare)\n98/131\ninstall.packages(\"caTools\")\nlibrary(caTools)\nset.seed(88)\nsplit = sample.split(quality$PoorCare, SplitRatio = .75)\n",
+    "created" : 1434709712729.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1459743392",
+    "id" : "F8C16719",
+    "lastKnownWriteTime" : 1768845165,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

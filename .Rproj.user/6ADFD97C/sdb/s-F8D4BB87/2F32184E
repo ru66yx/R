@@ -1,0 +1,18 @@
+{
+    "contents" : "climateChange <- read.csv(\"climate_change.csv\", header = TRUE)\ntrainCliCha <- subset(climateChange, Year <= 2006)\ntestCliCha <- subset(climateChange, Year > 2006)\nhead(trainCliCha)\ntail(trainCliCha)\nmod1 <- lm(Temp ~ MEI +CO2 + CH4 + N2O + CFC.11 + CFC.12 +  TSI + Aerosols, data = trainCliCha)\nsummary(mod1)\ncor(trainCliCha)\nmod2 <- lm(Temp ~ MEI + N2O+ TSI + Aerosols, data = trainCliCha)\nsummary(mod2)\nstepMod1 <- step(mod1)\nmod3 <- lm(Temp ~ MEI +CO2 + N2O + CFC.11 + CFC.12 +  TSI + Aerosols, data = trainCliCha)\nsummary(mod3)\npredictions <- predict(mod3, newdata = testCliCha)\nSSE = sum((predictions - testCliCha$Temp)^2) # 0.2176444\nSSE\nSST = sum ((mean(trainCliCha$Temp ) - testCliCha$Temp) ^2) \nSST # 0.26751\n1 - SSE/SST # .1864065\nmod4 <- lm(Temp ~ MEI +CO2 + N2O + CFC.11 + CFC.12 +  TSI + Aerosols, data = testCliCha)\nsummary(mod4)\n",
+    "created" : 1434108651050.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "816686381",
+    "id" : "2F32184E",
+    "lastKnownWriteTime" : 1434224360,
+    "path" : "~/Documents/R/AnalyticsEdge/Assignment2a.R",
+    "project_path" : "Assignment2a.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

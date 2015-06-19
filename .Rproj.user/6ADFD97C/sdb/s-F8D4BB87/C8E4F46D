@@ -1,0 +1,18 @@
+{
+    "contents" : "pisaTest <- read.csv(\"pisa2009test.csv\", header = TRUE)\npisaTrain <- read.csv(\"pisa2009train.csv\", header = TRUE)\nsummary(pisaTrain)\ntapply(pisaTrain$readingScore,pisaTrain$male,mean)\ntable(is.na(pisaTrain[,24])) \npisaTrain = na.omit(pisaTrain)\npisaTest = na.omit(pisaTest)\npisaTrain$raceeth = relevel(pisaTrain$raceeth, \"White\")\npisaTest$raceeth = relevel(pisaTest$raceeth, \"White\")\nlmScore = lm(readingScore ~ ., data = pisaTrain)\nsummary(lmScore)\nSSE = sum((lmScore$residuals)^2)\nSSE\nRMSE = sqrt(SSE/nrow(pisaTrain))\nmean(pisaTrain$readingScore)\nRMSE\n# grade9 = subset(pisaTrain,pisaTrain$grade==9)\n# grade11 = subset(pisaTrain,pisaTrain$grade==11)\n# mean(predict(lmScore, newdata = grade11))\n# mean(predict(lmScore, newdata = grade9))\npredTest <- predict(lmScore, newdata = pisaTest)\nsummary(predTest)\n637.7 -353.2\nsSE = sum((predTest - pisaTest$readingScore)^2)\nsSE\nsST = sum((mean(pisaTrain$readingScore)-pisaTest$readingScore)^2 )\n1 - sSE/sST\nrMSE<- sqrt(sSE/nrow(pisaTest))\nrMSE\nmean(pisaTest$grade)\n",
+    "created" : 1434193934445.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1053630166",
+    "id" : "C8E4F46D",
+    "lastKnownWriteTime" : 1434224355,
+    "path" : "~/Documents/R/AnalyticsEdge/Assignment2b.R",
+    "project_path" : "Assignment2b.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

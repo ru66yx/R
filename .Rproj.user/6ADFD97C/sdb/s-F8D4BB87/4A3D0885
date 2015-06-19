@@ -1,0 +1,18 @@
+{
+    "contents" : "elantra <- read.csv(\"elantra.csv\", header = TRUE)\nsummary(elantra)\nelantrain <- subset(elantra, Year <= 2012)\nelantraTest <- subset(elantra, Year > 2012)\nelantraLm <- lm(ElantraSales ~ Unemployment + CPI_all + CPI_energy + Queries, data = elantrain )\nsummary(elantraLm)\nelantraLm2 <- lm(ElantraSales ~ Unemployment + CPI_all + CPI_energy + as.factor( Month), data = elantrain )\nsummary(elantraLm2)\ncor(elantrain)\nelantraLm3 <- lm(ElantraSales ~ Unemployment + CPI_all + CPI_energy + as.factor( Month), data = elantrain )\nsummary(elantraLm3)\npredictions <- predict(elantraLm3, newdata = elantraTest)\nSSE = sum((predictions - elantraTest$ElantraSales)^2)\nRMSE = sqrt(SSE/nrow(elantraTest))\nRMSE\nmean(elantrain$ElantraSales)\nSST = sum((mean(elantrain$ElantraSales) - elantraTest$ElantraSales)^2)\n1 - SSE/SST\nmax(abs(predictions - elantraTest$ElantraSales))\nwhich.max (abs(predictions - elantraTest$ElantraSales))\nwhich.max(predictions - elantraTest$ElantraSales)\nwhich.min(predictions - elantraTest$ElantraSales)\nelantraTest[5,]\npredictions[5] - elantraTest$ElantraSales[5]\n",
+    "created" : 1434290602349.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "53192963",
+    "id" : "4A3D0885",
+    "lastKnownWriteTime" : 1434709697,
+    "path" : "~/Documents/R/AnalyticsEdge/optional2.R",
+    "project_path" : "optional2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
