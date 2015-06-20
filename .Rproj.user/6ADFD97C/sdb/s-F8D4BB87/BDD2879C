@@ -1,12 +1,12 @@
 {
     "contents" : "FluTrain = read.csv(\"FluTrain.csv\", header = T)\nsummary(FluTrain)\nwhich.max(FluTrain$ILI)\nFluTrain[303,]\nwhich.max(FluTrain$Queries)\nhist(FluTrain$ILI)\nlogil <- log(FluTrain$ILI)\nplot(FluTrain$Queries,logil )\n# FluTrend1 <- lm(log(FluTrain$ILI) ~ FluTrain$Queries)\nFluTrend1 = lm(log(ILI)~Queries, data=FluTrain)\n#FluTrend2 <- lm(FluTrain$Queries ~log(FluTrain$ILI) )\nsummary(FluTrend1)\n#summary(FluTrend2)\ncor(logil ,FluTrain$Queries)\ncor(logil ,FluTrain$Queries)^2\nFluTest = read.csv(\"FluTest.csv\", header = T)\nsummary(FluTest)\nPredTest1 = exp(predict(FluTrend1, newdata=FluTest))\n# PredTest2 = exp(predict(FluTrend2, newdata=FluTest))\nFluTest$Week\n(-PredTest1[11]+FluTest$ILI[11])/FluTest$ILI[11]\nPredTest1[11]\nSSE = sum((PredTest1 -FluTest$ILI)^2)\nRMSE = sqrt(SSE/nrow(FluTest))\nRMSE\n# install.packages(\"zoo\")\nlibrary(zoo)\nILILag2 = lag(zoo(FluTrain$ILI), -2, na.pad=TRUE)\nFluTrain$ILILag2 = coredata(ILILag2)\ntable(is.na(FluTrain$ILILag2))\nplot( log (FluTrain$ILILag2), log(FluTrain$ILI))\nFluTrend2 = lm(log(ILI)~Queries + log(ILILag2), data=FluTrain)\nsummary(FluTrend2)\nILILag2 = lag(zoo(FluTest$ILI), -2, na.pad=TRUE)\nFluTest$ILILag2 = coredata(ILILag2)\ntable(is.na(FluTest$ILILag2))\nFluTest$ILILag2[1] = FluTrain$ILI[416]\nFluTest$ILILag2[2] = FluTrain$ILI[417]\nPredTest2 = exp(predict(FluTrend2, newdata=FluTest))\nsummary(PredTest2)\nSSE2 = sum((PredTest2 -FluTest$ILI)^2)\nRMSE2 = sqrt(SSE2/nrow(FluTest))\nRMSE2\n",
     "created" : 1434206240469.000,
-    "dirty" : true,
+    "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "885411521",
     "id" : "BDD2879C",
-    "lastKnownWriteTime" : 1434224351,
+    "lastKnownWriteTime" : 1434807934,
     "path" : "~/Documents/R/AnalyticsEdge/Assignment2c.R",
     "project_path" : "Assignment2c.R",
     "properties" : {

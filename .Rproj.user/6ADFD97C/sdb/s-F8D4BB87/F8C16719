@@ -1,14 +1,14 @@
 {
-    "contents" : "quality <- read.csv(\"quality.csv\", header = TRUE)\nhead(quality)\nsummary(quality)\nstr(quality)\ntable (quality$PoorCare)\n98/131\ninstall.packages(\"caTools\")\nlibrary(caTools)\nset.seed(88)\nsplit = sample.split(quality$PoorCare, SplitRatio = .75)\n",
+    "contents" : "quality <- read.csv(\"quality.csv\", header = TRUE)\nhead(quality)\nsummary(quality)\nstr(quality)\ntable (quality$PoorCare)\n98/131\ninstall.packages(\"caTools\")\nlibrary(caTools)\nset.seed(88)\nsplit = sample.split(quality$PoorCare, SplitRatio = .75)\nsplit\nqualityTest = subset(quality, split == FALSE)\nqualityTrain = subset(quality, split == TRUE)\nqualityLog <- glm(PoorCare ~ OfficeVisits + Narcotics, data = qualityTrain, family = binomial)\npredictTrain <- predict(qualityLog, type = 'response')\nsummary(qualityLog)\nsummary(predictTrain)\ntapply(predictTrain, qualityTrain$PoorCare,mean)\nQualityLog2 = glm(PoorCare ~ StartedOnCombination + ProviderCount, data=qualityTrain, family=binomial)\nsummary(QualityLog2)\nModel = glm(PoorCare ~ StartedOnCombination + ProviderCount, data=qualityTrain, family=binomial)\nsummary(Model)\ntable(qualityTrain$PoorCare, predictTrain > 0.5)\ninstall.packages(\"ROCR\")\nlibrary(ROCR)\nROCRPred <- prediction(predictTrain, qualityTrain$PoorCare)\nROCRperf <- performance(ROCRPred, \"tpr\",\"fpr\")\nplot(ROCRperf)\nplot(ROCRperf, colorize = TRUE)\nplot(ROCRperf, colorize = TRUE, print.cutoffs.at= seq(0,1,0.1), text.adj = c(-0.2,1.7))\npredictTest = predict(qualityLog, type=\"response\", newdata=qualityTest)\n# You can compute the test set AUC by running the following two commands\nROCRpredTest = prediction(predictTest, qualityTest$PoorCare)\nauc = as.numeric(performance(ROCRpredTest, \"auc\")@y.values)\n",
     "created" : 1434709712729.000,
-    "dirty" : true,
-    "encoding" : "",
+    "dirty" : false,
+    "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1459743392",
+    "hash" : "1682830147",
     "id" : "F8C16719",
-    "lastKnownWriteTime" : 1768845165,
-    "path" : null,
-    "project_path" : null,
+    "lastKnownWriteTime" : 1434807862,
+    "path" : "~/Documents/R/AnalyticsEdge/Unit3a.R",
+    "project_path" : "Unit3a.R",
     "properties" : {
         "tempName" : "Untitled1"
     },
