@@ -15,9 +15,9 @@ Train = subset(stevens, spl==TRUE)
 Test = subset(stevens, spl==FALSE)
 
 # Install rpart library
-install.packages("rpart")
+#install.packages("rpart")
 library(rpart)
-install.packages("rpart.plot")
+#install.packages("rpart.plot")
 library(rpart.plot)
 
 # CART model
@@ -45,7 +45,7 @@ plot(perf)
 # VIDEO 5 - Random Forests
 
 # Install randomForest package
-install.packages("randomForest")
+#install.packages("randomForest")
 library(randomForest)
 
 # Build random forest model
@@ -61,18 +61,28 @@ StevensForest = randomForest(Reverse ~ Circuit + Issue + Petitioner + Respondent
 # Make predictions
 PredictForest = predict(StevensForest, newdata = Test)
 table(Test$Reverse, PredictForest)
-(40+74)/(40+37+19+74)
+(41+74)/(41+36+19+74)
 
+#############################################
+as.numeric(performance(pred, "auc")@y.values)
+StevensTree = rpart(Reverse ~ Circuit + Issue + Petitioner + Respondent + LowerCourt + Unconst, data = Train, method="class", minbucket=5)
+prp(StevensTree)
+#############################################
+set.seed(100)
+StevensForest = randomForest(Reverse ~ Circuit + Issue + Petitioner + Respondent + LowerCourt + Unconst, data = Train, ntree=200, nodesize=25 )
 
+# Make predictions
+PredictForest = predict(StevensForest, newdata = Test)
+table(Test$Reverse, PredictForest)
 
 # VIDEO 6
 
 # Install cross-validation packages
-install.packages("caret")
+# install.packages("caret")
 library(caret)
-install.packages("e1071")
+# install.packages("e1071")
 library(e1071)
-
+# install.packages("SparseM")
 # Define cross-validation experiment
 numFolds = trainControl( method = "cv", number = 10 )
 cpGrid = expand.grid( .cp = seq(0.01,0.5,0.01)) 
@@ -82,7 +92,7 @@ train(Reverse ~ Circuit + Issue + Petitioner + Respondent + LowerCourt + Unconst
 
 # Create a new CART model
 StevensTreeCV = rpart(Reverse ~ Circuit + Issue + Petitioner + Respondent + LowerCourt + Unconst, data = Train, method="class", cp = 0.18)
-
+prp(StevensTreeCV)
 # Make predictions
 PredictCV = predict(StevensTreeCV, newdata = Test, type = "class")
 table(Test$Reverse, PredictCV)
